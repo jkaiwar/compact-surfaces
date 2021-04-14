@@ -1,6 +1,74 @@
 \section{Introduction}
 \label{sec:intro}
 
+!(Begin with historical note)
+
+We will begin by describing the theorem that we intend to prove then
+we will get into some motivation for it's proof. Our theorem will
+``classify'' surfaces, or \emph{2-manifolds} by showing that each
+\emph{compact surface} is \emph{equivalent} to one of a countable
+number of known surfaces. The meaning of this might not be clear at
+first as we haven't yet properly defined what we mean by
+\emph{surface}, \emph{compact} or \emph{equivalent}; a proper
+definition of these terms will be given after the next section where we
+formally introduce these concepts and can then make a proper statement
+of the theorem. 
+
+Even so, the theorem can be quite illustratively described in a
+qualitative manner. And we can also provide an overview and high-level
+motivation for the proof. The notion of \emph{surface} is quite
+familiar to us in common parlance, these include planes and the
+``outermost layer'' of most of everyday objects we interact with,
+though we need to first introduce topological spaces to give us a
+formal definition. Our preliminary section will be dedicated to
+generalising many concepts from metric spaces via topological spaces.
+
+A notable property of surfaces is
+\emph{orientability}, wherein surfaces can be orientable or
+not. Intuitively we can understand orientable surfaces as those on
+which we can travel in whatever path we like and never reach the
+opposite side; for example: we can traverse the globe, with our heads
+pointing away from the core, starting from a point $A$, in any path we
+like but we will never reach $A$ with our heads pointing towards the
+core. Spheres, tori and planes (which we will see are equivalent to
+spheres) are all examples of orientable surfaces whilst an easily
+visualised example of a non-orientable surface is the M\"obius strip,
+pictured in !(ref). A proper definition of orientability will be given
+later as well.
+
+We have been talking about \emph{equivalence} of surfaces in the
+preceeding paragraphs. To be more precise, we really mean
+\emph{homeomorphic}, that is there exists an invertible function
+between the two surfaces and both it and its inverse are
+continuous. For this we will develop notions of continuity in the next
+section, which will be more general than what we have already
+encountered in metric spaces. \emph{Compactness} also has a topological
+definition that is distinct and not equivalent to sequential
+compactness we are familiar with from metric spaces.
+
+\subsection{Motivation for the Proof}
+\label{sec:intro:motivation}
+
+We complete our preliminary section by introducting a particular
+topological space, \emph{the quotient topology}. This will provide us
+with a toolkit to `morph' spaces including most usefully, the
+ability to \emph{identify edges}, or  `cut and paste' patches of the
+surface, being certain that surfaces before and after this action are
+homeomorphic. We will also be able to \emph{identify vertices} in a similar
+manner.
+
+An important assumption we make (and exclude from the proof) is that
+compact surfaces can be \emph{triangulated} i.e.\ cut up into finitely
+many triangles. We will properly define triangulation later, but to
+see a proof that compact surfaces can be triangulated, refer to
+!(). Having `cut up' our surface into finitely many triangles, we will
+paste them onto the plane $\mathbb{R}^2$ and arrange them such that a
+polygon is formed. From here we will \emph{identify edges} and
+\emph{identify vertices} of the polygon till we have a polygon that
+matches one of our countably many prototypes.
+
+
+
 
 %%% Local Variables:
 %%% mode: latex
