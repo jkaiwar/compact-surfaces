@@ -1,8 +1,228 @@
 \section{Topological Preliminaries}
 \label{sec:prelims}
 
+Recall, that for a metric space $(X,d)$ we have that a subset $A
+\subseteq X$ is open if for every $x_0 \in A$, there exists $\delta >
+0$ such that $\{x \in X | d(x,x_0) < \delta\} \subseteq A$.
+
+Many properties of metric spaces can be defined even without
+describing an explicit metric and we can talk about limits, continuity
+and compactness simply by considering ``open'' sets. It seems then
+that we can generalise many results from metric spaces in a space
+where we start by defining what sets are open. That is exactly what we
+do when we define topological spaces.
+
+% Comment on not a full discussion
 \subsection{Topological Spaces}
 \label{sec:prelims:topospace}
+
+\begin{defn}
+  Let $X$ be a set and suppose $\mathscr{T}$ is a collection of
+  subsets of $X$ that satisfies
+  \begin{enumerate}
+  \item $X$ and $\emptyset$ belong to $\mathscr{T}$;
+  \item Given a subcollection $\{A_\alpha \in \mathscr{T} | \alpha \in
+    I$, where $I$ is some indexing set, we have that the union
+    $\cup_{\alpha \in I}A_\alpha$ belongs to $\mathscr{T}$ as well;
+  \item Given a finite subcollection $\{B_i \in \mathscr{T} | i =
+    1,2,3,\dots, n \}$ for some $n \in \mathbb{N}$ we have that the
+    intersection $\cap_{i = 1}^{n}$ belongs to $\mathscr{T}$ as well.
+  \end{enumerate}
+  Then we say that $\mathscr{T}$ is a topology on $X$ and that every
+  element of $\mathscr{T}$ is an \emph{open} set. We say that
+  $(X,\mathscr{T})$ is a topological space.
+\end{defn}
+
+Immediately we have a couple of trivial examples of topologies given
+any set $X$.
+
+\begin{exmp}
+  \label{exmp:trivial}
+  The smallest collection of subsets satisfying the above axioms is
+  clearly $\{ X, \emptyset \}$. We call this the \emph{trivial
+    topology} on $X$. It is the \emph{coarsest} topology on $X$, i.e.\
+  it is containted in every topology on $X$, by the first axiom.
+\end{exmp}
+
+\begin{exmp}
+  \label{exmp:discrete}
+  The power set on $X$, i.e.\ the collection of all subsets of $X$,
+  including $X$ trivially satisfies all the axioms. We call it the
+  \emph{discrete topology} on $X$ and notice that it is the
+  \emph{finest} topology on $X$, that is, it contains every other
+  topology on $X$.
+\end{exmp}
+
+Since we have referred to notions of \emph{fineness} or
+\emph{coarseness} with respect to topology without a proper
+exposition, it is worth noting that not all topologies can be
+compared; in other words, we might come across two topologies on a set
+$X$ where one isn't contained in the other. !(candidate for footnote)
+
+
+Consider the following more involved example.
+
+\begin{exmp}
+  \label{exmp:countable}
+  We have that $\mathscr{T}_C := \{U \subset X \mid X \setminus U
+  \text{ countable or all of } X \}$ is a topology on $X$.
+\end{exmp}
+
+\begin{proof} %%needs correction?
+  We show each axiom of topological spaces for $\mathscr{T}_C$.
+  \begin{enumerate}
+  \item Clearly $\emptyset \in \mathscr{T}_C$ since $X \setminus
+    \emptyset = X$, that is, all of $X$.
+  \item Let $S$ be a subcollection of $\mathscr{T}_C$ indexed by some
+    set $I$; $S := \{U_i \in \mathscr{T}_C \mid i \in I \}$. Now, we
+    want to show that $\cup_{i \in I} U_i \in \mathscr{T}_C$. We note
+    that $X \setminus \cup_{i \in I} U_i = \cap_{i \in I}(X \setminus
+    U_i) \subset (X \setminus U_j)$, for some arbitrary $j \in
+    I$. However $(X \setminus U_j)$ is countable by hypothesis and so
+    must be $X \setminus \cup_{i \in I} U_i$, its subset, and the
+    result follows.
+  \item Let $n \in \mathbb{N}$, a finite positive integer and suppose
+    that $V_1, \dots, V_n$ is a finite subcollection of open sets. We
+    want to show that their intersection is open. We have that
+    \[
+      X \setminus (\cap_{k=1}^n V_k) = \cup_{k=1}^n (X \setminus V_k).
+    \]
+    Since each $V_k$ is open, it's complement is countable. We know
+    that finite unions of countable sets are countable (from
+    introduction to proofs) so $X \setminus \cap_{k=1}^n V_k$ is   %% refering this
+    countable and the finite union is open by definition.
+  \end{enumerate}
+\end{proof}
+
+On the other hand this leads to an instructive counterexample.
+
+\begin{exmp}
+  The collection
+  \[
+    \mathscr{T}_\infty = \{U \mid X \setminus U \text{ is infinite or
+      empty or all of } X \}
+  \]
+  is \emph{not} a topology on $X$
+\end{exmp}
+
+\begin{proof}
+  $\mathscr{T}_\infty$ is not necessarily a topology because in second
+axiom, with the indexing as in example \ref{exmp:countable}, $X
+\setminus \cup_{i \in I} U_i = \cap_{i \in I} (X \setminus U_i)$ may
+be finite.
+
+  For example if $X = \mathbb{Z}$, the union of the open sets $\{ \{1,
+2, 3, \dots \}$ and $\{-1, -2, -3, \dots \} \}$, we have that the
+union of these sets has complement $(X \setminus \{1, 2, 3, \dots \})
+\cap (\setminus \{-1, -2, -3, \dots \}) = \{0, -1, -2, \dots \} \cap
+\{0, 1, 2, \dots \} = \{ 0 \}$ which is finite and nonempty and so the
+union is not open in $\mathscr{T}_\infty$.
+\end{proof}
+
+
+\subsubsection{Basis for a Topology}
+\label{sec:prelims:topospace:basis}
+
+To look at some more sophisticated examples of topologies !(reeval), we will
+first introduce the notion of \emph{basis} in topological spaces. Like
+in Linear Algebra, we find that the \emph{basis}  generates our
+topological space. 
+
+\begin{defn}
+  Given a set $X$, we say that a collection of subsets $\mathscr{B}$
+  is a \emph{basis} if it satisfies
+  \begin{enumerate}
+  \item For each $x \in X$ there exists a \emph{basis element} $B \in
+    \mathscr{B}$ with $x \in B$.
+  \item If $x \in B_1 \cap B_2$, where $B_1$ and $B_2$ are basis
+    elements, then we have that there exists a basis element $B$ such
+    that $B$ both contains $x$ and is contained in the intersection
+    $B_1 \cap B_2$.
+  \end{enumerate}
+  Given the basis $\mathscr{B}$ as above we say that $U$ is open in
+  the \emph{topology generated by} $\mathscr{B}$ if for each $x \in U$
+  there exists some basis element $B$ with $x \in B \subseteq U$.
+\end{defn}
+
+To see that such a collection generated as such is indeed a topology
+is trivial and ommitted here !(ref).
+
+We have the following Lemmas to better see how bases generate their
+respective topologies and how bases can be identified.
+
+\begin{lem}
+  \label{lem:union}
+  Let $\mathscr{B}$ be a basis on a set $X$. Then the topology
+  $\mathscr{T}$ generated by $\mathscr{B}$ is equal to the collection
+  of all unions on the elements of $\mathscr{B}$.
+\end{lem}
+
+\begin{proof}
+  Any collection of elements in $\mathscr{B} \subseteq \mathscr{T}$
+  must have their union open by the second axiom of topological
+  spaces. Given an open set $S$ and $x \in S$ there exists a basis
+  element $B_x$ with $x \in B_x \subseteq S$. Therefore $S$ must
+  contain the union $\cup_{x \in S} B_x$. Conversely we have that each
+  element $x$ of $S$ is contained in some $B_x$, thus $S$ is contained
+  in the union and we have that $S = \cup_{x \in S} B_x$ as required
+\end{proof}
+
+From this proof it becomes clear that unlike linear algebra, we may
+have our open set generated by basis elements in multiple
+ways. !(example).
+
+\begin{lem}
+  \label{lem:collection}
+  Let $(X,\mathscr{T})$ be a topological space. If $\mathscr{C}$ is a
+  collection of open sets such that for each open set $U$ and $x \in
+  U$, we have that there exists $C \in \mathscr{C}$ with 
+  \[
+    x \in C \subseteq U.
+  \]
+  Then $\mathscr{C}$ is a basis for $\mathscr{T}$.
+\end{lem}
+
+\begin{proof}
+  We will show that $\mathscr{C}$ is a basis when the above condition
+  is met. Since $X$ is open, we can apply the condition $x \in C
+  \subseteq X$ for each $x \in X$ to give us (1) of the definition for
+  the Basis.
+
+  For the second condition suppose $x \in C_1 \cap C_2$ where $C_1$
+  and $C_2$ belong to the open collection $\mathscr{C}$. $x \in C_1
+  \cap C_2$ must be open as well by the third axiom so applying our
+  condition to the intersection we have that there exists $C \in
+  \mathscr{C}$ with
+  \[
+    x \in C \subseteq x \in C_1 \cap C_2
+  \]
+  as required. Thus $\mathscr{C}$ is a basis, but we need to show that
+  it generates $\mathscr{T}$.
+
+  Suppose $\mathscr{T}'$ is generated by $\mathscr{C}$. We have by
+  assumption that any set $U \in \mathscr{T}$ has that for all $x \in
+  U$ there exists $C\ in \mathscr{C}$ such that $x \in C \subseteq U$
+  and thus $U \in \mathscr{T}'$ by definition.
+
+  Conversely any element $U'$ of $\mathscr{T}'$ can be written as a
+  union of elements of $\mathscr{C}$ by Lemma \ref{lem:union}. But
+  $\mathscr{C}$ consists of sets in $\mathscr{T}$ and thus the union
+  $U'$ is in $\mathscr{T}$ by the second axiom. Therefore we have
+  $\mathscr{T}' = \mathscr{T}$.
+\end{proof}
+
+\begin{exmp}
+  \label{exmp:standard}
+  If we say that for all $a<b$, $(a,b) = \{x | a < x <b \}$ is an open
+  interval, the \emph{standard topology} on $\mathbb{R}$ is defined to be
+  generated by the basis $\mathscr{B}$ consisting of all open
+  intervals:
+  \[
+    \mathscr{B} = \{(a,b)| -\infty \leq a < b \leq \infty\}.
+  \]
+\end{exmp}
+
+
 
 \subsection{The Subspace Topology}
 \label{sec:prelims:subspace}
