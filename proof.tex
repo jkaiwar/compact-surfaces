@@ -1,32 +1,150 @@
-\section{Proof of the Theorem !(insert-label)}
-\label{sec:proof}
+%% Tomorrow
+%% surfaces example
+%% extend to n manifold
+%% orientability intuition
+%% research definition of orientablity
+%% prototype drawings and quotient space formations
+%% connected sum definitions and n-torus quotient space formation
+%% lemma 7.1
 
-\subsection{Surfaces, Compactness, Orientability}
-\label{sec:proof:surfaces}
+
+\section{Surfaces and their Classification}
+\label{sec:surf}
+
+We will finally be able to give a proper topological definition for
+surfaces, and soon we will be able to state the theorem.
+
+\subsection{Surfaces and Orientability}
+\label{sec:surf:surfaces}
+
+We begin by recalling the metric topology from example
+\ref{exmp:metric}. With this topology in mind for the metric space
+$\mathbb{R}^2$ under the euclidean metric, we have the following
+definition
+
+\begin{defn}
+  We say that $S$ is a \emph{surface} if it is a Hausdorff space for
+  which every point has a neighbourhood that is homeomorphic to the
+  open unit ball $\{\mathbf{x} \in \mathbb{R}^2 \mid \lvert \mathbf{x}
+  \rvert < 1 \}$.
+\end{defn}
+
+We present the following examples.
+
+\begin{exmp}
+  The plane $\mathbb{R}^2$ is trivially a surface; each point is
+  contained in $\mathbb{R}^2$, an open set that is homeomorphic to the
+  unit ball $B_1(0)$ via $f:B_1(0) \rightarrow \mathbb{R}^2$, given by
+  \[
+    x \mapsto \frac{x}{x^2 - 1}.
+  \]
+
+  It is easy to see as a simple extension that any open subset of
+  $\mathbb{R}^2$ is a surface.
+\end{exmp}
+
+
+We will see many more examples of surfaces in section
+\ref{sec:surf:prototype} but we will present one more example of a
+surface to introduce the concept of \emph{orientability}. Here our
+example will be defined as a \emph{quotient space}. The reader is
+advised to pay close attention to this example as it shows how a !(fin)
+
+\begin{exmp}
+  Let $X$ be the subset of $\mathbb{R}^2$ that is equal to
+  \[
+    \{ (x,y) \in \mathbb{R}^2 \mid -10 \leq x \leq 10 ; -1 < y < 1 \}.
+  \]
+  Now, bearing in mind our discussion from section
+  \ref{sec:prelims:quotient}, we \emph{identify} the points $(-10,-y)$
+  and $(10,y)$ for $y \in (-1,1)$. In other words we define the
+  quotient space $X^*$ to consist of points $(x,y)$ in their own
+  equivalence class for $-10 < x < 10$ and $-1 < y < 1$ while the
+  points $(-10,-y)$ and $(10,y)$ are each in the same equivalence
+  class. We call the latter class of points ``identified'' points.
+  
+  Now we will attempt to show that $X^*$ is indeed a surface. We will
+  proceed by finding for each element $\mathbf{x}$ of $X^*$ an open
+  neighbourhood characterised by a radius $r > 0$. Then we will show
+  that our choice is homeomorphic to the unit ball on $\mathbb{R}^2$
+  and finally we will show that given any two points the
+  neighbourhoods can be chosen such that they don't intersect
+  (Hausdorff condition).
+
+  Assume that $\mathbf{x}$ isn't identified. This point is mapped by
+  the projection map $\pi$ from a unique point in the interior of the
+  rectangle $X \subseteq \mathbb{R}^2$. Working in this open rectangle
+  as a metric space, we can find open balls given by radius $r >0$
+  that is entirely contained in the interior of the rectangle. Now
+  map this ball back to $X^*$ via $\pi$ and denote this set by
+  $B_r(\mathbf{x}) \subseteq X^*$.
+  
+  Since the ball was contained in the interior of the rectangle, no
+  point in them is identified, so the projection's restricton to the
+  open ball in $X$ is invertible. It follows that $\pi^{-1}
+  (B_r(\mathbf{x}))$ is exactly the ball that we started with and is
+  open in $X$, so by definition of the quotient space
+  $(B_r(\mathbf{x}))$ is an open neighbourhood of $\mathbf{x}$.
+
+  In the case that $\mathbf{x}$ is an identified point, its pullback
+  is the pair of points $\pm(10, y)$ on the border of $X$. Given $0 <
+  r < \operatorname{min} \{ 1-y, -1-y \}$, let $U_r(\mathbf{x})$ be
+  the intersection of the two open balls of radius $r$ about $\pm(10,
+  y)$ with $X$. We define the image of $U_r(\mathbf{x})$ under the
+  projection $\pi$ to be $B_r(\mathbf{x})$. Now it is easy to see that
+  the preimage of $B_r(\mathbf{x})$ under $\pi$ is $U_r(\mathbf{x})$,
+  which is open in the subspace $X$. It follows that $B_r(\mathbf{x})$
+  suffices as a neighbourhood for $\mathbf{x}$.
+
+  It is important to note however that we haven't defined quotient
+  subspace $X^*$ and our notation $B_r(\mathbf{x})$ similar to that of
+  open balls in metric spaces is only notional and will help with
+  intuition later on.
+\end{exmp}
+
+
+\subsection{Stating the Classifiction Theorem}
+\label{sec:surf:prototype}
+
+Now we will show how some common surfaces can be written as quotient
+spaces of various polygons by identifying edges. Then we will
+introduce connected sums of surfaces and their respective quotient
+space. Lastly we will prove an important lemma to simplify some
+connected sums. Our goal in proving the classification theorem will
+then be to show that an arbitrary surface is the quotient space of a
+polygon as above. Finally with the ``prototype'' surfaces defined, we
+will provide formal statement of the classification thoerem.
+
+\subsubsection{Orientable Surfaces}
+
+Here we describe the prototype surfaces that are orientable.
+
+
+
+
 
 \subsection{Triangulation}
-\label{sec:proof:triangulation}
+\label{sec:surf:triangulation}
 
-\subsection{Prototype Surfaces}
-\label{sec:proof:prototype}
+
 
 \subsection{Adjoining a projective plane to a torus}
-\label{sec:proof:adjoin}
+\label{sec:surf:adjoin}
 
 \subsection{Forming a Polygon}
-\label{sec:proof:polygon}
+\label{sec:surf:polygon}
 
 \subsection{Folding in pairs of the first kind}
-\label{sec:proof:vertices}
+\label{sec:surf:vertices}
 
 \subsection{Identifying Vertices}
-\label{sec:proof:folding}
+\label{sec:surf:folding}
 
 \subsection{Rearranging pairs of the second kind}
-\label{sec:proof:second}
+\label{sec:surf:second}
 
 \subsection{Final Arrangement}
-\label{sec:proof:final}
+\label{sec:surf:final}
 
 
 %%% Local Variables:
