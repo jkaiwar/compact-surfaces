@@ -29,6 +29,10 @@ definition
   \rvert < 1 \}$.
 \end{defn}
 
+We often implicitly like to deal with surfaces that are
+\emph{connected} and \emph{compact} as discussed in section
+\ref{sec:prelims:compact}.
+
 We present the following examples.
 
 \begin{exmp}
@@ -46,11 +50,13 @@ We present the following examples.
 
 We will see many more examples of surfaces in section
 \ref{sec:surf:prototype} but we will present one more example of a
-surface to introduce the concept of \emph{orientability}. Here our
-example will be defined as a \emph{quotient space}. The reader is
-advised to pay close attention to this example as it shows how a !(fin)
+surface to introduce the property of \emph{orientability} possessed by
+connected surfaces. Here our example will be defined as a
+\emph{quotient space}. The reader is advised to pay close attention to
+this example as it shows how a !(fin).
 
 \begin{exmp}
+  \label{exmp:mobius}
   Let $X$ be the subset of $\mathbb{R}^2$ that is equal to
   \[
     \{ (x,y) \in \mathbb{R}^2 \mid -10 \leq x \leq 10 ; -1 < y < 1 \}.
@@ -102,7 +108,81 @@ advised to pay close attention to this example as it shows how a !(fin)
   intuition later on.
 \end{exmp}
 
+!(use cut and paste language)
 
+\subsection{Triangulation}
+\label{sec:surf:triangulation}
+
+We define what it means to triangulate a surface.
+
+\begin{defn}
+  Given a surface $S$, we say that the collection of closed sets $\{
+  T_1,  T_2, \dots T_n \}$ \emph{triangulates} $S$ if it covers $S$
+  and for each $i = 1,2, \dots, n$ there exists homoeomorphisms $\phi
+  : T_i' \rightarrow T_i$ where each $T_i'$ is a triangle in
+  $\mathbb{R}^2$ under the metric topology (described in example
+  \ref{exmp:metric}). We say that the \emph{edges} of $T_i$ are images
+  of the edges of $T_i'$ for each $i$; similarly the \emph{vertices}
+  of $T_i$ are the images of the vertices of $T_i'$.
+\end{defn}
+
+We take it as a fact that any compact surface can be triangulated. We
+understand that this is the case from !(complete).
+
+Given that an arbitrary surface $S$ can be triangulated, we make
+``cuts'' along the edges of the triangles and notice that each
+triangle can be ``pasted'' onto the plane $\mathbb{R}^2$. Since
+translations are homeomorphisms as well, we can translate the
+triangles appropriately and have all triangles from the triangulation
+``pasted'' on the plane in a manner by which they do not intersect
+each other.
+
+More formally, we begin by inductively relabelling our
+triangulation. Suppose we have $n$ ``triangles'' that cover $S$; then
+we proceed to label them inductively starting by labelling any
+triangle $T_1$. Then, for each $1 \leq i \leq n-1$, choose a $T_{i+1}$
+that has an edge $e_i$ in common with one of the preceeding
+triangles $T_1, T_2, \dots, T_i$. Such a triangle must always exist by
+our implicit assumtion of the connectedness of $S$. Numbering  our
+triangle in this manner, we have defined the edges $e_i$ for $2 \leq i
+\leq n$. 
+
+For each triangle $T_i$ we must by definition have a homeomporphism
+$\psi_i: T_i' \rightarrow T_i$, where $T_i'$ is a triangle in
+$\mathbb{R}^2$. Translating the triangles $T_i'$ to $T_i''$ such that
+they are pairwise disjoint, it is clear that there exists
+homeomorphisms $\phi_i: T_i'' \rightarrow T_i$. Finally, given $T'' =
+\cup_{i=1}^n T_i''$ and $\phi : T'' \rightarrow S$ defined via $\phi
+\restriction T_i = \phi_i$ it is easy to see that $\phi : T''
+\rightarrow S$ is a homeomorphism. 
+
+For now, we assume that our surface $S$ doesn't have a
+boundary and as a result each triangle edge has a corresponding edge %% what is a boundary?
+on some other triangle that it is identified with.
+
+Here we have explained how an arbitrary compact surface is
+homeomorphic to finitely many triangles pasted on the plane
+\emph{under the quotient topology} identifying pairs of edges. It is
+important to note that we must include the added information of which
+edges are identified with each other when we represent this quotient
+space, and also include in what direction they are to be glued on. In
+particular we will represent this quotient space as the triangle that
+forms it with each edge labeled and an it's identification
+``direction''. Figure \ref{fig:represent} shows us how we may imagine
+this space.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=3cm]{pepe.jpg}
+  \caption{Representing our quotient topology and ``gluing''
+    corresponding edges.}
+  \label{fig:represent}
+\end{figure}
+
+We will show that the triangles of this quotient space can be glued
+onto one another so that we end up with a polygon.
+
+%% work in 2.4 (a)
 \subsection{Stating the Classifiction Theorem}
 \label{sec:surf:prototype}
 
@@ -115,17 +195,15 @@ then be to show that an arbitrary surface is the quotient space of a
 polygon as above. Finally with the ``prototype'' surfaces defined, we
 will provide formal statement of the classification thoerem.
 
+\begin{thm}
+  Any compact surface is either homeomorphic to a sphere, or to a
+  connected sum of tori, or to a connected sum of projective planes.
+\end{thm}
+
 \subsubsection{Orientable Surfaces}
 
-Here we describe the prototype surfaces that are orientable.
-
-
-
-
-
-\subsection{Triangulation}
-\label{sec:surf:triangulation}
-
+Here we describe the prototype surfaces that are orientable, namely
+the sphere and n-tori.
 
 
 \subsection{Adjoining a projective plane to a torus}

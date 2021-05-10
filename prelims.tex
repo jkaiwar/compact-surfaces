@@ -709,7 +709,7 @@ in the following cases however.
   !(retvrn)
 \end{proof}
 
-\subsection{Compactness}
+\subsection{Compactness and Connectedness}
 \label{sec:prelims:compact}
 
 This is the final concept that we will need to introduce before we can
@@ -781,6 +781,24 @@ under the condition of compactness.
   $Y$. 
 \end{proof}
 
+One last property we will introduce without much discussion is that of
+connectedness. This property in effect gives us that the space can't
+be ``split'' as the union of two disjoint nonempty open sets. In
+particular we have the following.
+
+\begin{defn}
+  Given a topological space $(X,\mathscr{T})$, we say that a subset $E
+  \subseteq X$ is connected if there are no open sets $U$, $V$ such that
+  \begin{itemize}
+  \item $U$,$V$ covers $E$, i.e.\ $E \subseteq U \cup V$;
+  \item $E \cap U \not= \emptyset$ and $E \cap V \not= \emptyset$;
+  \item $E \cap U \cap V = \emptyset$, i.e.\ they are separated.
+  \end{itemize}
+\end{defn}
+
+A trivial example of a connected set is any singleton $\{a \}$, $a \in
+X$. We can also say the whole space $X$ is connected by substituting
+$X$ for $E$ in the above definition.
 
 %%% Local Variables:
 %%% mode: latex
